@@ -2345,7 +2345,9 @@ gimp_item_tree_view_effects_edited_clicked (GtkWidget        *widget,
   /* TODO: Revisit when we can apply filters to multiple layers */
   if (g_list_length (drawables) != 1)
     {
-      g_warning (_("Cannot modify multiple drawables. Select only one."));
+      gimp_message_literal (image->gimp, G_OBJECT (view), GIMP_MESSAGE_ERROR,
+                            _("Cannot modify multiple drawables. Select only one."));
+
       g_list_free (drawables);
       return;
     }
